@@ -11991,20 +11991,17 @@ Moe_Szyslak: You&#39;re too late, Homer. Barney sucked it dry. Cut his gums up p
 <span class="sd">    Generate a dict to turn punctuation into a token.</span>
 <span class="sd">    :return: Tokenize dictionary where the key is the punctuation and the value is the token</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">dat</span> <span class="o">=</span>  <span class="p">[(</span><span class="s2">&quot;Period&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Comma&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Quotation Mark&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Semicolon&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Exclamation mark&quot;</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Question mark&quot;</span><span class="p">,</span> <span class="s2">&quot;?&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Left Parentheses&quot;</span><span class="p">,</span> <span class="s2">&quot;(&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Right Parentheses&quot;</span><span class="p">,</span> <span class="s2">&quot;)&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Dash&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">),</span>
-            <span class="p">(</span><span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)]</span>
-
-    <span class="k">def</span> <span class="nf">make_token</span><span class="p">(</span><span class="n">word</span><span class="p">):</span> <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;||&quot;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s2">&quot;||&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="p">{</span><span class="n">sym</span><span class="p">:</span> <span class="n">make_token</span><span class="p">(</span><span class="n">wrd</span><span class="p">)</span> <span class="k">for</span> <span class="n">wrd</span><span class="p">,</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">dat</span><span class="p">}</span>
+    <span class="n">dat</span> <span class="o">=</span>  <span class="p">{</span><span class="s2">&quot;.&quot;</span><span class="p">:</span> <span class="s2">&quot;||Period||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;,&quot;</span><span class="p">:</span> <span class="s2">&quot;||Comma||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;||Quotation_Mark||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;;&quot;</span><span class="p">:</span> <span class="s2">&quot;||Semicolon||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;!&quot;</span><span class="p">:</span> <span class="s2">&quot;||Exclamation_mark||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;?&quot;</span><span class="p">:</span> <span class="s2">&quot;||Question_mark||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;(&quot;</span><span class="p">:</span> <span class="s2">&quot;||Left_Parentheses||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;)&quot;</span><span class="p">:</span> <span class="s2">&quot;||Right_Parentheses||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--&quot;</span><span class="p">:</span> <span class="s2">&quot;||Dash||&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;||Return||&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">dat</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">DON&#39;T MODIFY ANYTHING IN THIS CELL THAT IS BELOW THIS LINE</span>
@@ -12721,88 +12718,88 @@ Default GPU Device: /gpu:0
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Epoch   0 Batch    0/27   train_loss = 8.822
-Epoch   3 Batch   19/27   train_loss = 5.703
-Epoch   7 Batch   11/27   train_loss = 4.953
-Epoch  11 Batch    3/27   train_loss = 4.646
-Epoch  14 Batch   22/27   train_loss = 4.183
-Epoch  18 Batch   14/27   train_loss = 3.995
-Epoch  22 Batch    6/27   train_loss = 3.774
-Epoch  25 Batch   25/27   train_loss = 3.462
-Epoch  29 Batch   17/27   train_loss = 3.368
-Epoch  33 Batch    9/27   train_loss = 3.127
-Epoch  37 Batch    1/27   train_loss = 2.874
-Epoch  40 Batch   20/27   train_loss = 2.737
-Epoch  44 Batch   12/27   train_loss = 2.616
-Epoch  48 Batch    4/27   train_loss = 2.511
-Epoch  51 Batch   23/27   train_loss = 2.464
-Epoch  55 Batch   15/27   train_loss = 2.268
-Epoch  59 Batch    7/27   train_loss = 2.144
-Epoch  62 Batch   26/27   train_loss = 2.065
-Epoch  66 Batch   18/27   train_loss = 1.941
-Epoch  70 Batch   10/27   train_loss = 1.807
+Epoch   3 Batch   19/27   train_loss = 5.637
+Epoch   7 Batch   11/27   train_loss = 4.932
+Epoch  11 Batch    3/27   train_loss = 4.643
+Epoch  14 Batch   22/27   train_loss = 4.191
+Epoch  18 Batch   14/27   train_loss = 3.998
+Epoch  22 Batch    6/27   train_loss = 3.790
+Epoch  25 Batch   25/27   train_loss = 3.473
+Epoch  29 Batch   17/27   train_loss = 3.350
+Epoch  33 Batch    9/27   train_loss = 3.183
+Epoch  37 Batch    1/27   train_loss = 2.891
+Epoch  40 Batch   20/27   train_loss = 2.764
+Epoch  44 Batch   12/27   train_loss = 2.655
+Epoch  48 Batch    4/27   train_loss = 2.502
+Epoch  51 Batch   23/27   train_loss = 2.441
+Epoch  55 Batch   15/27   train_loss = 2.266
+Epoch  59 Batch    7/27   train_loss = 2.135
+Epoch  62 Batch   26/27   train_loss = 2.017
+Epoch  66 Batch   18/27   train_loss = 1.889
+Epoch  70 Batch   10/27   train_loss = 1.769
 Epoch  74 Batch    2/27   train_loss = 1.741
-Epoch  77 Batch   21/27   train_loss = 1.731
-Epoch  81 Batch   13/27   train_loss = 1.526
-Epoch  85 Batch    5/27   train_loss = 1.517
-Epoch  88 Batch   24/27   train_loss = 1.423
-Epoch  92 Batch   16/27   train_loss = 1.349
-Epoch  96 Batch    8/27   train_loss = 1.287
-Epoch 100 Batch    0/27   train_loss = 1.161
-Epoch 103 Batch   19/27   train_loss = 1.105
-Epoch 107 Batch   11/27   train_loss = 1.130
-Epoch 111 Batch    3/27   train_loss = 1.017
-Epoch 114 Batch   22/27   train_loss = 1.027
-Epoch 118 Batch   14/27   train_loss = 1.015
-Epoch 122 Batch    6/27   train_loss = 0.939
-Epoch 125 Batch   25/27   train_loss = 0.822
-Epoch 129 Batch   17/27   train_loss = 0.818
-Epoch 133 Batch    9/27   train_loss = 0.799
-Epoch 137 Batch    1/27   train_loss = 0.701
-Epoch 140 Batch   20/27   train_loss = 0.631
-Epoch 144 Batch   12/27   train_loss = 0.577
-Epoch 148 Batch    4/27   train_loss = 0.586
-Epoch 151 Batch   23/27   train_loss = 0.557
-Epoch 155 Batch   15/27   train_loss = 0.483
-Epoch 159 Batch    7/27   train_loss = 0.450
-Epoch 162 Batch   26/27   train_loss = 0.448
-Epoch 166 Batch   18/27   train_loss = 0.469
-Epoch 170 Batch   10/27   train_loss = 0.393
-Epoch 174 Batch    2/27   train_loss = 0.421
-Epoch 177 Batch   21/27   train_loss = 0.406
-Epoch 181 Batch   13/27   train_loss = 0.350
-Epoch 185 Batch    5/27   train_loss = 0.363
-Epoch 188 Batch   24/27   train_loss = 0.347
-Epoch 192 Batch   16/27   train_loss = 0.300
-Epoch 196 Batch    8/27   train_loss = 0.254
-Epoch 200 Batch    0/27   train_loss = 0.238
-Epoch 203 Batch   19/27   train_loss = 0.228
-Epoch 207 Batch   11/27   train_loss = 0.200
-Epoch 211 Batch    3/27   train_loss = 0.211
-Epoch 214 Batch   22/27   train_loss = 0.233
-Epoch 218 Batch   14/27   train_loss = 0.200
-Epoch 222 Batch    6/27   train_loss = 0.193
-Epoch 225 Batch   25/27   train_loss = 0.178
-Epoch 229 Batch   17/27   train_loss = 0.179
-Epoch 233 Batch    9/27   train_loss = 0.176
-Epoch 237 Batch    1/27   train_loss = 0.168
-Epoch 240 Batch   20/27   train_loss = 0.144
-Epoch 244 Batch   12/27   train_loss = 0.136
-Epoch 248 Batch    4/27   train_loss = 0.157
-Epoch 251 Batch   23/27   train_loss = 0.157
-Epoch 255 Batch   15/27   train_loss = 0.131
-Epoch 259 Batch    7/27   train_loss = 0.124
-Epoch 262 Batch   26/27   train_loss = 0.145
-Epoch 266 Batch   18/27   train_loss = 0.134
-Epoch 270 Batch   10/27   train_loss = 0.129
-Epoch 274 Batch    2/27   train_loss = 0.151
-Epoch 277 Batch   21/27   train_loss = 0.131
-Epoch 281 Batch   13/27   train_loss = 0.117
-Epoch 285 Batch    5/27   train_loss = 0.136
-Epoch 288 Batch   24/27   train_loss = 0.150
-Epoch 292 Batch   16/27   train_loss = 0.128
-Epoch 296 Batch    8/27   train_loss = 0.125
-Epoch 300 Batch    0/27   train_loss = 0.138
-Epoch 303 Batch   19/27   train_loss = 0.136
+Epoch  77 Batch   21/27   train_loss = 1.820
+Epoch  81 Batch   13/27   train_loss = 1.467
+Epoch  85 Batch    5/27   train_loss = 1.455
+Epoch  88 Batch   24/27   train_loss = 1.435
+Epoch  92 Batch   16/27   train_loss = 1.348
+Epoch  96 Batch    8/27   train_loss = 1.304
+Epoch 100 Batch    0/27   train_loss = 1.168
+Epoch 103 Batch   19/27   train_loss = 1.119
+Epoch 107 Batch   11/27   train_loss = 1.076
+Epoch 111 Batch    3/27   train_loss = 1.036
+Epoch 114 Batch   22/27   train_loss = 1.036
+Epoch 118 Batch   14/27   train_loss = 0.912
+Epoch 122 Batch    6/27   train_loss = 0.844
+Epoch 125 Batch   25/27   train_loss = 0.768
+Epoch 129 Batch   17/27   train_loss = 0.726
+Epoch 133 Batch    9/27   train_loss = 0.719
+Epoch 137 Batch    1/27   train_loss = 0.628
+Epoch 140 Batch   20/27   train_loss = 0.571
+Epoch 144 Batch   12/27   train_loss = 0.541
+Epoch 148 Batch    4/27   train_loss = 0.543
+Epoch 151 Batch   23/27   train_loss = 0.507
+Epoch 155 Batch   15/27   train_loss = 0.459
+Epoch 159 Batch    7/27   train_loss = 0.456
+Epoch 162 Batch   26/27   train_loss = 0.453
+Epoch 166 Batch   18/27   train_loss = 0.440
+Epoch 170 Batch   10/27   train_loss = 0.374
+Epoch 174 Batch    2/27   train_loss = 0.378
+Epoch 177 Batch   21/27   train_loss = 0.361
+Epoch 181 Batch   13/27   train_loss = 0.304
+Epoch 185 Batch    5/27   train_loss = 0.297
+Epoch 188 Batch   24/27   train_loss = 0.274
+Epoch 192 Batch   16/27   train_loss = 0.242
+Epoch 196 Batch    8/27   train_loss = 0.229
+Epoch 200 Batch    0/27   train_loss = 0.210
+Epoch 203 Batch   19/27   train_loss = 0.202
+Epoch 207 Batch   11/27   train_loss = 0.187
+Epoch 211 Batch    3/27   train_loss = 0.182
+Epoch 214 Batch   22/27   train_loss = 0.194
+Epoch 218 Batch   14/27   train_loss = 0.164
+Epoch 222 Batch    6/27   train_loss = 0.169
+Epoch 225 Batch   25/27   train_loss = 0.149
+Epoch 229 Batch   17/27   train_loss = 0.155
+Epoch 233 Batch    9/27   train_loss = 0.169
+Epoch 237 Batch    1/27   train_loss = 0.165
+Epoch 240 Batch   20/27   train_loss = 0.140
+Epoch 244 Batch   12/27   train_loss = 0.144
+Epoch 248 Batch    4/27   train_loss = 0.160
+Epoch 251 Batch   23/27   train_loss = 0.160
+Epoch 255 Batch   15/27   train_loss = 0.155
+Epoch 259 Batch    7/27   train_loss = 0.130
+Epoch 262 Batch   26/27   train_loss = 0.147
+Epoch 266 Batch   18/27   train_loss = 0.136
+Epoch 270 Batch   10/27   train_loss = 0.125
+Epoch 274 Batch    2/27   train_loss = 0.141
+Epoch 277 Batch   21/27   train_loss = 0.126
+Epoch 281 Batch   13/27   train_loss = 0.112
+Epoch 285 Batch    5/27   train_loss = 0.125
+Epoch 288 Batch   24/27   train_loss = 0.135
+Epoch 292 Batch   16/27   train_loss = 0.117
+Epoch 296 Batch    8/27   train_loss = 0.115
+Epoch 300 Batch    0/27   train_loss = 0.121
+Epoch 303 Batch   19/27   train_loss = 0.117
 Model Trained and Saved
 </pre>
 </div>
@@ -12952,7 +12949,14 @@ Model Trained and Saved
 <span class="sd">    :param int_to_vocab: Dictionary of word ids as the keys and words as the values</span>
 <span class="sd">    :return: String of the predicted word</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">int_to_vocab</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)]</span>
+    
+    <span class="c1"># `np.random.choice` Generates a random sample based on an array from which to sample from</span>
+    <span class="c1"># and, optionally, the probability of each value in the array to be sampled</span>
+    <span class="c1"># https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.choice.html</span>
+    <span class="n">choice_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="n">int_to_vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">p</span><span class="o">=</span><span class="n">probabilities</span> <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">int_to_vocab</span><span class="p">[</span><span class="n">choice_index</span><span class="p">]</span>
+
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -12994,7 +12998,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen_length</span> <span class="o">=</span> <span class="mi">200</span>
@@ -13055,23 +13059,25 @@ Model Trained and Saved
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>barney_gumble: hey, frazier, shut up!
-smokin&#39;_joe_frazier: barney, you&#39;ve been riding my back all night.
-barney_gumble: oh yeah? care that, homer?
-homer_simpson: ooo, i&#39;m sorry, moe. i didn&#39;t mean everyone everyone. hope you don&#39;t mind if you get me there?
-moe_szyslak: oh, right. i was thinking of another thing i got goin&#39;.
-apu_nahasapeemapetilon: how about the be sharps!
-barney_gumble:(pained moan)
-homer_simpson:(loud whisper) i don&#39;t tell your mother of a brilliant new star utility vehicle.
-chief_wiggum:(excited) oh, absolutely no friction dancing!
-barney_gumble: aw, c&#39;mon. what&#39;re you, killjoy!
-moe_szyslak:(amid men&#39;s reactions) you got that right!
-seymour_skinner: edna won&#39;t even let you use that no more.
-moe_szyslak: yeah, at me, ya dinks.
-moe_szyslak: ma&#39;am.
-apu_nahasapeemapetilon:(sighs)
-moe_szyslak:(stagey) your change, sir.
-moe_szyslak: we&#39;re workin&#39; on that roach situation, i swear. the end of the bar, and low-blow boxing
+<pre>barney_gumble: no, i mean it.
+barney_gumble: you won&#39;t see me here again. ever.
+moe_szyslak: wait, that ain&#39;t funny.
+moe_szyslak:(under phone) what?
+moe_szyslak:(pulls out shotgun) in the bar me right!
+
+
+homer_simpson: mr. smithers, our lives are awesome, thanks to you. and because i don&#39;t know.
+homer_simpson: we just have to get closer.
+homer_simpson: so the next time somebody tells you county folk are good, moe.
+moe_szyslak:(pulls out shotgun) in springfield.
+waylon_smithers: here&#39;s to suffering in silence.
+waylon_smithers:(intrigued noise)
+homer_simpson:(tough) am i need to do.
+moe_szyslak:(to self) santeria, you&#39;re the one behind this. so knock it off or we&#39;re going to the cops.
+homer_simpson: moe&#39;s valentine&#39;s crap channel? hasn&#39;t been good since they don&#39;t make me so much.
+adult_bart: yeah, we had or keep it?
+moe_szyslak: listen... this is heaven.(sips beer)
+lisa_simpson: jebediah springfield
 </pre>
 </div>
 </div>
